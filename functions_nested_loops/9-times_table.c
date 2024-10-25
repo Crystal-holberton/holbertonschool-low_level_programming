@@ -15,20 +15,18 @@ void times_table(void)
 		while (y <= 9)
 		{
 			z = x * y;
-			if (z >= 10)
+			if (y > 0)
 			{
-				_putchar(z / 10 + '0');
-				_putchar(z % 10 + '0');
+				_putchar(' ');
+			}
+			if (z < 10)
+			{
+				_putchar('0' + z);
 			}
 			else
 			{
-				_putchar(' ');
-				_putchar(z + '0');
-			}
-			if (y < 9)
-			{
-				_putchar(',');
-				_putchar(' ');
+				_putchar('0' + z / 10);
+				_putchar('0' + z % 10);
 			}
 			y++;
 		}
