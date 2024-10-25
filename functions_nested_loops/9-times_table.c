@@ -7,7 +7,7 @@
 
 void times_table(void)
 {
-	int x = 0, y;
+	int x = 0, y = 0;
 
 	while (x <= 9)
 	{
@@ -16,7 +16,7 @@ void times_table(void)
 		{
 			int z = x * y;
 
-			if (z >= 9)
+			if (z >= 10)
 			{
 				_putchar((z / 10) + '0');
 			}
