@@ -32,7 +32,7 @@ int main(void)
 			printf("%d", z);
 			z++;
 		}
-		if (z != 100)
+		if (z <= 100)
 		{
 			printf(" ");
 		}
