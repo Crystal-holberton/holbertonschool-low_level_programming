@@ -9,7 +9,7 @@
 int _atoi(char *s)
 {
 	int c = 0;
-	unsigned int nil = 0;
+	unsigned int num = 0;
 	int sign = 1;
 	int res = 0;
 
@@ -22,7 +22,7 @@ int _atoi(char *s)
 		while (s[c] >= 48 && s[c] <= 57)
 		{
 			res = 1;
-			nil = (nil * 10) + (s[c] - '0');
+			num = (num * 10) + (s[c] - '0');
 			c++;
 		}
 		if (res == 1)
@@ -31,6 +31,6 @@ int _atoi(char *s)
 		}
 		c++;
 	}
-	nil *= sign;
-	return (nil);
+	num *= sign;
+	return (num);
 }
