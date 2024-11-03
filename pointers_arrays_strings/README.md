@@ -18,3 +18,12 @@
 5-string_toupper.c a function that changes all lowercase letters of a string to uppercase
 6-cap_string.c a function that capitalizes all words of a string
 7-leet.c a function that encodes a string into 1337
+
+0-memset.c a function that fills memory with a constant byte
+1-memcpy.c a function that copies memory area
+2-strchr.c a function that locates a character in a string
+3-strspn.c a function that gets the length of a prefix substring
+4-strpbrk.c a function that searches a string for any of a set of bytes
+5-strstr.c a function that locates a substring
+7-print_chessboard.c prints the chessboard
+8-print_diagsums.c prints the sum of the two diagonals of a square matrix of integers
