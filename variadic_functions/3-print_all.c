@@ -9,35 +9,35 @@
  */
 void print_all(const char * const format, ...)
 {
-        va_list args;
-        f_dt form_types[] = {
-                { "c", print_char },
-                { "i", print_integer },
-                { "f", print_float },
-                { "s", print_char_ptr },
-        };
-        unsigned int i = 0;
-        unsigned int j = 0;
-        char *separator = "";
+	va_list args;
+	f_dt form_types[] = {
+		{ "c", print_char },
+		{ "i", print_integer },
+		{ "f", print_float },
+		{ "s", print_char_ptr },
+	};
+	unsigned int i = 0;
+	unsigned int j = 0;
+	char *separator = "";
 
-        va_start(args, format);
+	va_start(args, format);
 
-        while (format != NULL && format[i])
-        {
+	while (format != NULL && format[i])
+	{
 		j = 0;
-                while (j < 4)
-                {
-                        if (format[i] == *form_types[j].identifier)
-                        {
-                                form_types[j].f(separator, args);
-                                separator = ", ";
-                        }
-                        j++;
-                }
-                i++;
-        }
-        va_end(args);
-        printf("\n");
+		while (j < 4)
+		{
+			if (format[i] == *form_types[j].identifier)
+			{
+				form_types[j].f(separator, args);
+				separator = ", ";
+			}
+			j++;
+		}
+		i++;
+	}
+	va_end(args);
+	printf("\n");
 }
 
 /**
