@@ -25,22 +25,22 @@ void error_exit(int code, const char *message, const char *filename)
  * @f_to_n: destination file name
  * Return: void
  */
-void copy_file(int f_from, int f_to, const char *f_from_n, const char *f_to_n)
+void copy_file(int file_from, int file_to, const char *file_from_name, const char *file_to_name)
 {
 	char buffer[BUFFER_SIZE];
-	ssize_t b_r, b_w;
+	ssize_t bytes_read, bytes_written;
 
-	while ((b_r = read(f_from, buffer, BUFFER_SIZE)) > 0)
+	while ((bytes_read = read(file_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		b_w = write(f_to, buffer, b_r);
-		if (b_w != b_r)
+		bytes_written = write(file_to, buffer, bytes_read);
+		if (bytes_written != bytes_read)
 		{
-			error_exit(99, "Error: Can't write to %s\n", f_to_n);
+			error_exit(99, "Error: Can't write to %s\n", file_to_name);
 		}
 	}
-	if (b_r < 0)
+	if (bytes_read < 0)
 	{
-		error_exit(98, "Error: Can't read from file %s\n", f_from_n);
+		error_exit(98, "Error: Can't read from file %s\n", file_from_name);
 	}
 }
 
@@ -66,25 +66,25 @@ void close_file(int fd)
  */
 int main(int argc, char *argv[])
 {
-	int f_from, f_to;
+	int file_from, file_to;
 
 	if (argc != 3)
 	{
-		error_exit(97, "Usage: cp f_from f_to\n", NULL);
+		error_exit(97, "Usage: cp file_from file_to\n", NULL);
 	}
-	f_from = open(argv[1], O_RDONLY);
-	if (f_from < 0)
+	file_from = open(argv[1], O_RDONLY);
+	if (file_from < 0)
 	{
 		error_exit(98, "Error: Can't read from file %s\n", argv[1]);
 	}
-	f_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (f_to < 0)
+	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (file_to < 0)
 	{
-		close_file(f_from);
+		close_file(file_from);
 		error_exit(99, "Error: Can't write to %s\n", argv[2]);
 	}
-	copy_file(f_from, f_to, argv[1], argv[2]);
-	close_file(f_from);
-	close_file(f_to);
+	copy_file(file_from, file_to, argv[1], argv[2]);
+	close_file(file_from);
+	close_file(file_to);
 	return (0);
 }
