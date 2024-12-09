@@ -19,10 +19,10 @@ void error_exit(int code, const char *message, const char *filename)
 
 /**
  * copy_file - copies content from file to file
- * @f_from: source file descriptor
- * @f_to: destination file descriptor
- * @f_from_n: source file name
- * @f_to_n: destination file name
+ * @file_from: source file descriptor
+ * @file_to: destination file descriptor
+ * @file_from_name: source file name
+ * @file_to_name: destination file name
  * Return: void
  */
 void copy_file(int file_from, int file_to, const char *file_from_name, const char *file_to_name)
