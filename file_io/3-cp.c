@@ -25,7 +25,8 @@ void error_exit(int code, const char *message, const char *filename)
  * @file_to_name: destination file name
  * Return: void
  */
-void copy_file(int file_from, int file_to, const char *file_from_name, const char *file_to_name)
+void copy_file(int file_from, int file_to, const char *file_from_name,
+		const char *file_to_name)
 {
 	char buffer[BUFFER_SIZE];
 	ssize_t bytes_read, bytes_written;
