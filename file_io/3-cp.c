@@ -34,7 +34,7 @@ void close_file(int fd)
 {
 	if (close(fd) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
-		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDOUT_FILENO, "97\n");
 		exit(97);
 	}
 	copy_file(argv[1], argv[2]);
