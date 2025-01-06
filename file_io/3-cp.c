@@ -16,11 +16,11 @@ void print_error(const char *message, const char *filename, int exit_code)
 {
 	if (filename)
 	{
-		dprintf(2, "%s %s\n", message, filename);
+		dprintf(STDOUT_FILENO, "%s %s\n", message, filename);
 	}
 	else
 	{
-		dprintf(2, "%s\n",  message);
+		dprintf(STDOUT_FILENO, "%s\n",  message);
 	}
 	exit(exit_code);
 }
@@ -34,7 +34,7 @@ void close_file(int fd)
 {
 	if (close(fd) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	copy_file(argv[1], argv[2]);
