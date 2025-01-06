@@ -39,7 +39,7 @@ void copy_file(int file_from, int file_to, const char *file_from_name,
 			error_exit(99, "Error: Can't write to %s\n", file_to_name);
 		}
 	}
-	if (bytes_read == -1)
+	if (bytes_read < 0)
 	{
 		error_exit(98, "Error: Can't read from file %s\n", file_from_name);
 	}
